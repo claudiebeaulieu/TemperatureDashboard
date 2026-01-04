@@ -25,3 +25,5 @@ library(leaflet.extras)
 # load functions #####
 
 source('./code/ImportncData.R')
+source('./code/StCpts.R')
+source('./code/PELTtrendARpJOIN.R')
