@@ -2,12 +2,18 @@
 .Rhistory
 .Rapp.history
 
-# Session Data files
-.RData
+.DS_Store
+
+# Intermediate Data files
+*.RData
 .RDataTmp
 
 # User-specific files
 .Ruserdata
+
+# Raw data files
+*.nc
+data/raw/
 
 # Example code in package build process
 *-Ex.R
