@@ -8,22 +8,17 @@
 
 ## Gridded datasets #####
 
-dataset_name=c("NASA","HadCRUT","NOAA","Berkeley","DCENT")
-Tas_varname = c("tempanomaly","tas_mean","air","temperature","temperature") # The variables we want from the different gridded datasets
-lon_varname = c("lon","longitude","lon","longitude","lon")
-lat_varname = c("lat","latitude","lat","latitude","lat")
+dataset_name = "Berkeley"
+Tas_varname = "temperature" 
+lon_varname = "longitude"
+lat_varname = "latitude"
 time_varname = "time"
-start_year = c(1880,1850,1850,1850,1850)
+start_year = 1850
 end_year = 2024
 
-file_paths=c("./data/raw/gistemp1200_GHCNv4_ERSSTv5.nc",
-             "./data/raw/HadCRUT.5.0.2.0.analysis.anomalies.ensemble_mean.nc",
-             "./data/raw/air.mon.anom.nc",
-             "./data/raw/Land_and_Ocean_LatLong1.nc",
-             "./data/raw/DCENT_ensemble_1850_2024_ensemble_mean.nc")
+file_path = "./data/Land_and_Ocean_LatLong1.nc"
 
-for(i in 1:5){
-  ImportncData(file_paths[i],dataset_name[i],Tas_varname[i],lon_varname[i],lat_varname[i],time_varname,start_year[i],end_year)
-}
-# For each dataset listed above, a file named annual_*dataset_name*_anom.RData containing annual anomalies has been created 
-# in /data/processed. Those are the intermediate datasets used in this study, not saved in the repository as they are too large.
+ImportncData(file_path,dataset_name,Tas_varname,lon_varname,lat_varname,time_varname,start_year,end_year)
+
+# A file named annual_Berkeley_anom.RData containing annual anomalies has been created 
+# in /data. Those are the intermediate datasets used in this study, not saved in the repository as they are too large.
