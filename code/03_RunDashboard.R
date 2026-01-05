@@ -6,26 +6,26 @@
 # Script to run the dashboard.
 
 # Loading Processed Data + CP Analysis results
-#load("./data/annual_Berkeley_anom.RData")
+#load('./data/annual_Berkeley_anom.RData')
 #load('./results/ResultsBerkeley.RData')
 
 # Rename temperature and time data
-time_data <- time[121:175]
-temperature_data <- tas_annual[,,121:175]
+time_data = time[121:175]
+temperature_data = tas_annual[,,121:175]
 
 # Reshape the temperature data to a matrix
-temperature_matrix <- matrix(temperature_data, 
-                             nrow = dim(temperature_data)[1] * dim(temperature_data)[2], 
+temperature_matrix = matrix(temperature_data,
+                             nrow = dim(temperature_data)[1] * dim(temperature_data)[2],
                              ncol = dim(temperature_data)[3])
 
 # Combine temperature and time data into a data frame
-combined_data <- cbind(expand.grid(lon = 1:dim(temperature_data)[1], 
-                                   lat = 1:dim(temperature_data)[2]), 
-                       time = rep(time_data, each = dim(temperature_data)[1] * dim(temperature_data)[2]), 
+combined_data = cbind(expand.grid(lon = 1:dim(temperature_data)[1],
+                                   lat = 1:dim(temperature_data)[2]),
+                       time = rep(time_data, each = dim(temperature_data)[1] * dim(temperature_data)[2]),
                        temperature = as.vector(temperature_matrix))
 
 # Add the changepoint fit to the combined data frame
-combined_data$fittrend <- as.vector(results$fittrend)
+combined_data$fittrend = as.vector(results$fittrend)
 
 # Remove rows with NaN values
 combined_data <- combined_data[complete.cases(combined_data), ]
@@ -37,11 +37,28 @@ combined_data$lon[combined_data$lon > 180] <- combined_data$lon[combined_data$lo
 # Convert latitude from 1-180 to -90 to 90
 combined_data$lat <- combined_data$lat - 90
 
+#####
+
+# # Create a data frame with temperature data and fitted trends
+# time_vec = time[121:175]
+# temperature_array = tas_annual[,,121:175]
+# indices = expand.grid(lon=lon, lat = lat, time = time_vec)
+# temp_vec = as.vector(temperature_array)
+# combined_data = data.frame(indices, temperature = temp_vec)
+# 
+# # Add the changepoint fit to the combined data frame
+# combined_data$fittrend = as.vector(results$fittrend)
+# 
+# # Remove rows with NaN values
+# combined_data = combined_data[complete.cases(combined_data), ]
+
+#####
+
 ########## App ##########
 
 # Define UI
 ui <- navbarPage(
-  title = "Temperature Monitoring",
+  title = "Temperature Dashboard",
   theme = bs_theme(
     version = 5,                 
     bootswatch = NULL,        
@@ -59,11 +76,11 @@ ui <- navbarPage(
            #hero
            fluidRow(
              column(width = 12, class = "intro",
-                    h1(class = "o-title", "Global Temperature Trends Dashboard"),
-                    h3(class = "o-sub", "Explore Global Temperature Anomalies"),
-                    p(class = "o-para", "Welcome to this monitoring dashboard for trends in global surface temperature. Using gridded data and known data analysis techniques, we will make an interactive 
-               dashboard that will be used for climate outreach. The techniques used involve fitting a changepoint model to each grid of data, revealing whether a 
-               specific lat/lon grid underwent a 'surge' in surface temperature. The data used was gathered from Berkeley Earth following a time period of (1850-2023).")
+                    h1(class = "o-title", "Explore Changes in Surface Temperature Trends"),
+                    #h3(class = "o-sub", "Explore Changes in Temperature Trends"),
+                    p(class = "o-para", "Welcome to this monitoring dashboard for trends in surface temperature. 
+                    You can click on a location on the map to interact with local temperature trends and assess whether any changepoints took place since 1970.
+                    Temperature data comes from Berkeley Earth.")
              )
            ),
            
@@ -74,15 +91,15 @@ ui <- navbarPage(
                class = "about",
                card_header(icon("globe"), "About This Dashboard"),
                card_body(
-                 p("This interactive dashboard enables exploration of global surface temperature changes using high-resolution gridded data from Berkeley Earth."),
+                 p("This interactive dashboard enables exploration of changes in surface temperature trends using high-resolution gridded data from Berkeley Earth."),
                  hr(),
                  h5("Key Features:"),
                  tags$ul(
                    tags$li("Interactive map-based exploration"),
                    tags$li("Changepoint detection analysis"),
                    tags$li("Location-specific time series"),
-                   tags$li("Hemisphere and global averages"),
-                   tags$li("Downloadable data and visualizations")
+                   #tags$li("Hemisphere and global averages"),
+                   #tags$li("Downloadable data and visualizations")
                  )
                )
              ),
@@ -94,13 +111,13 @@ ui <- navbarPage(
                    tags$dt("Data Source:"),
                    tags$dd("Berkeley Earth Surface Temperature"),
                    tags$dt("Time Period:"),
-                   tags$dd("1850-2023 (174 years)"),
+                   tags$dd("1970-2024 (55 years)"),
                    tags$dt("Spatial Resolution:"),
-                   tags$dd("1° × 1° global grid (64,800 cells)"),
+                   tags$dd("1° × 1° grid"),
                    tags$dt("Analysis Method:"),
-                   tags$dd("Changepoint detection models identify shifts in temperature trends at each location"),
-                   tags$dt("Metric:"),
-                   tags$dd("Temperature anomalies (°C deviation from baseline)")
+                   tags$dd("Changepoint detection is used to identify whether any changes in temperature trends took place at each location"),
+                   tags$dt("Reference:"),
+                   tags$dd("Claudie Beaulieu, Adelicia Johnson, Rebecca Killick, John Lanzante and Thomas Knutson. Space-time signatures of surface warming accelerations since 1970, 28 October 2025, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-7731926/v1]")
                  )
                )
              ),
@@ -111,10 +128,10 @@ ui <- navbarPage(
                  tags$ul(
                    tags$li("Navigate to the ", tags$strong("Maps"), " tab"),
                    tags$li("Click any location on the map or use the search bar"),
-                   tags$li("View temperature time series with fitted trends"),
-                   tags$li("Explore changepoint locations and warming rates"),
+                   tags$li("View local temperature time series with fitted trends"),
+                   tags$li("Explore changepoint times and warming rates"),
                    tags$li("Download data for selected locations"),
-                   tags$li("Compare regional and global trends")
+                   #tags$li("Compare regional and global trends")
                  )
                )
              )
@@ -128,7 +145,7 @@ ui <- navbarPage(
                       class="map-card",
                       full_screen = TRUE,
                       card_header(
-                        "Interactive Maps",
+                        "Interactive Map",
                         # actionButton("reset_map", "Reset View", size = "sm", class = "btn-outline-secondary")
                       ),
                       
@@ -136,7 +153,7 @@ ui <- navbarPage(
                         div(class="map-body",
                             tabsetPanel(
                               tabPanel("Map", leafletOutput("map", height = "500px")),
-                              tabPanel("Country Map", leafletOutput("map2", height = "500px"))
+                              #tabPanel("Country Map", leafletOutput("map2", height = "500px"))
                             )
                         )
                       )
@@ -147,7 +164,7 @@ ui <- navbarPage(
                     card(
                       class="time-card",
                       full_screen= TRUE,
-                      card_header(class="time-header", "Temperature Anomaly Time Series"),
+                      card_header(class="time-header", "Surface Temperature Time Series"),
                       div(class="time-body",
                           card_body(
                             div(class="timeseries_tabs", 
@@ -231,34 +248,38 @@ server <- function(input, output, session) {
     }
     
     if (nrow(selected_data) > 0) {
-      # Calculate Slope per Decade
-      first_ten <- head(selected_data, 10)  # First 10 years
-      last_ten <- tail(selected_data, 10)   # Last 10 Years
       
-      # Apply a regression model for each segment 
-      first_reg <- lm(fittrend ~ time, data = first_ten)
-      last_reg <- lm(fittrend ~ time, data = last_ten)
+      # # Calculate Slope per Decade
+      # first_ten <- head(selected_data, 10)  # First 10 years
+      # last_ten <- tail(selected_data, 10)   # Last 10 Years
+      # 
+      # # Apply a regression model for each segment 
+      # first_reg <- lm(fittrend ~ time, data = first_ten)
+      # last_reg <- lm(fittrend ~ time, data = last_ten)
+      # 
+      # summary_first <- summary(first_reg)
+      # summary_last <- summary(last_reg)
+      # 
+      # coefficients_first <- summary_first$coefficients 
+      # coefficients_last <- summary_last$coefficients
+      # 
+      # slope_per_decade_beg <- coefficients_first[2, 1] * 10  # Pulling slope per year values and converting to decade
+      # slope_per_decade_end <- coefficients_last[2, 1] * 10
       
-      summary_first <- summary(first_reg)
-      summary_last <- summary(last_reg)
-      
-      coefficients_first <- summary_first$coefficients 
-      coefficients_last <- summary_last$coefficients
-      
-      slope_per_decade_beg <- coefficients_first[2, 1] * 10  # Pulling slope per year values and converting to decade
-      slope_per_decade_end <- coefficients_last[2, 1] * 10
+      slope_per_decade_beg <- (selected_data$fittrend[2] - selected_data$fittrend[1])*10
+      slope_per_decade_end <- (selected_data$fittrend[55] - selected_data$fittrend[54])*10
       
       # Generate text for bottom of plot
       if (round(slope_per_decade_beg, digits = 3) == round(slope_per_decade_end, digits = 3)) {
         output$model_summary_text <- renderText({
-          paste("The Magnitude of the Trend is:", 
-                format(slope_per_decade_end, scientific = TRUE, digits = 3), "°C/Decade.")
+          paste("The magnitude of the trend is ", 
+                format(slope_per_decade_end, scientific = F, digits = 3), "°C per decade.")
         })
       } else {
         output$model_summary_text <- renderText({
-          paste("The Magnitude before the Changepoint:",
-                format(slope_per_decade_beg, scientific = TRUE, digits = 3), "°C/Decade",
-                "and after:", format(slope_per_decade_end, scientific = TRUE, digits = 3), "°C/Decade.")
+          paste("The trend magnitude before the change is",
+                format(slope_per_decade_beg, scientific = F, digits = 3), "°C per decade",
+                "and after", format(slope_per_decade_end, scientific = F, digits = 3), "°C per decade.")
         })
       }
       
