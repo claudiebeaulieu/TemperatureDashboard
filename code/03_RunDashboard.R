@@ -169,11 +169,11 @@ ui <- navbarPage(
                           card_body(
                             div(class="timeseries_tabs", 
                                 navset_pill(
-                                  nav_panel("Selected Location",div(class = "selected-graph", plotlyOutput("timeSeries", height = "450px"), hr(), verbatimTextOutput("model_summary_text"))),
-                                  nav_panel("Northern Hemisphere", div(class = "north-graph", plotlyOutput("northAverage", height = "500px"))),
-                                  nav_panel("Southern Hemisphere", div(class = "south-graph", plotlyOutput("southAverage", height = "500px"))),
-                                  nav_panel("Global Average", div(class = "global-graph", plotlyOutput("globalAverage", height = "500px"))
-                                  )
+                                  nav_panel("Selected Location",div(class = "selected-graph", plotlyOutput("timeSeries", height = "450px"), hr(), verbatimTextOutput("model_summary_text")))#,
+                                  #nav_panel("Northern Hemisphere", div(class = "north-graph", plotlyOutput("northAverage", height = "500px"))),
+                                  #nav_panel("Southern Hemisphere", div(class = "south-graph", plotlyOutput("southAverage", height = "500px"))),
+                                  #nav_panel("Global Average", div(class = "global-graph", plotlyOutput("globalAverage", height = "500px"))
+                                  #)
                                 )
                             )
                           )
@@ -269,17 +269,23 @@ server <- function(input, output, session) {
       slope_per_decade_beg <- (selected_data$fittrend[2] - selected_data$fittrend[1])*10
       slope_per_decade_end <- (selected_data$fittrend[55] - selected_data$fittrend[54])*10
       
+      differences = diff(selected_data$fittrend) 
+      cptime = selected_data$time[changed(round(differences,digits=5))]
+    
+      #print(cptime)
+      
       # Generate text for bottom of plot
       if (round(slope_per_decade_beg, digits = 3) == round(slope_per_decade_end, digits = 3)) {
         output$model_summary_text <- renderText({
-          paste("The magnitude of the trend is ", 
+          paste("The magnitude of the trend is", 
                 format(slope_per_decade_end, scientific = F, digits = 3), "°C per decade.")
         })
       } else {
         output$model_summary_text <- renderText({
-          paste("The trend magnitude before the change is",
+          paste("The trend before",
+                format(cptime[2]), "is",
                 format(slope_per_decade_beg, scientific = F, digits = 3), "°C per decade",
-                "and after", format(slope_per_decade_end, scientific = F, digits = 3), "°C per decade.")
+                "\n and", format(slope_per_decade_end, scientific = F, digits = 3), "°C per decade after.")
         })
       }
       
