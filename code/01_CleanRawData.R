@@ -1,8 +1,12 @@
 ################################################################################
-######################## Temperature dashboard project #########################
+# Temperature Monitoring Dashboard
+################################################################################
+# Description: Interactive Shiny dashboard for exploring surface temperature 
+#              trends with changepoint detection analysis
+# Data Source: Berkeley Earth Surface Temperature 
 ################################################################################
 
-################################################################################
+
 # Script to import the raw data and clean up into 3-D arrays for the gridded 
 # datasets and a data table for the global mean time series.
 

@@ -215,9 +215,19 @@ body {
 
 
 /* ==================== MAPS PAGE LAYOUT ==================== */
+/* KEY FIX: Ensure cards align at the same vertical position */
 .map-col,
 .time-col {
-  padding: 1vw;
+  padding: 1vw 1vw; /* Same padding for alignment */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack vertically */
+}
+
+/* KEY FIX: Remove any margin from cards that could misalign them */
+.map-card,
+.time-card {
+  margin: 0 !important;
+  flex: 1; /* Both cards grow equally to fill column height */
 }
 
 /* ==================== MAP CARD STYLING ==================== */
@@ -226,7 +236,11 @@ body {
   border: none !important;
   box-shadow: none !important;
   border-radius: 2px !important;
-  margin-bottom: 2vh;
+  margin: 0 !important; /* Remove margin */
+  /* KEY FIX: Make cards fill available height */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   .card-header {
     background-color: #46638c !important;
@@ -236,47 +250,78 @@ body {
     padding: 2vh 1vw;
     border-radius: 0 !important;
     border: none !important;
+    /* KEY FIX: Ensure headers are same height */
+    min-height: 6vh;
+    display: flex;
+    align-items: center;
   }
 
-  .card-body {
+  .map-outer-body {
     background-color: #dedfe0;
     padding: 1.5vw;
-
-    .map-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    .card-body {
       background-color: #ffffff;
       padding: 0;
       border-radius: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
 
-      .nav-tabs {
-        border-bottom: 2px solid #dedfe0;
-        background-color: #ffffff;
-      }
-
-      .nav-link {
-        color: #2c2c2c !important;
-        font-weight: 450;
-        font-size: 1.8vh;
-        border: none !important;
-        border-radius: 0 !important;
-        padding: 1.5vh 2vw;
-        transition: all 0.2s ease;
-
-        &:hover {
-          color: #003399 !important;
-          background-color: #f0f0f0;
-        }
-
-        &.active {
-          color: #093182 !important;
-          background-color: #ffffff;
-          border-bottom: 3px solid #093182 !important;
-          font-weight: 550;
-        }
-      }
-
-      .tab-content {
+      .map-body {
         background-color: #ffffff;
         padding: 0;
+        border-radius: 0;
+        /* KEY FIX: Fill available space */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .nav-tabs {
+          border-bottom: 2px solid #dedfe0;
+          background-color: #ffffff;
+        }
+
+        .nav-link {
+          color: #2c2c2c !important;
+          font-weight: 450;
+          font-size: 1.8vh;
+          border: none !important;
+          border-radius: 0 !important;
+          padding: 1.5vh 2vw;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: #003399 !important;
+            background-color: #f0f0f0;
+          }
+
+          &.active {
+            color: #093182 !important;
+            background-color: #ffffff;
+            border-bottom: 3px solid #093182 !important;
+            font-weight: 550;
+          }
+        }
+
+        .tab-content {
+          background-color: #ffffff;
+          padding: 0;
+          /* KEY FIX: Make tab content fill space */
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        /* KEY FIX: Ensure tab panes fill space */
+        .tab-pane {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
   }
@@ -288,6 +333,11 @@ body {
   border: none !important;
   box-shadow: none !important;
   border-radius: 2px !important;
+  margin: 0 !important; /* Remove margin */
+  /* KEY FIX: Make cards fill available height */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   .time-header {
     background-color: #46638c !important;
@@ -297,28 +347,123 @@ body {
     padding: 2vh 1vw;
     border-radius: 0 !important;
     border: none !important;
+    /* KEY FIX: Match header height with map card */
+    min-height: 6vh;
+    display: flex;
+    align-items: center;
   }
 
   .time-body {
     background-color: #dedfe0;
-    padding: 1.5vw;
+    padding: 1.5vw; /* MUST match map-outer-body padding */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 
     .card-body {
       background-color: #ffffff;
-      padding: 2vh 1.5vw;
+      padding: 0;
       border-radius: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      
+      /* Match map styling exactly with higher specificity */
+      .nav-tabs {
+        border-bottom: 2px solid #dedfe0 !important;
+        background-color: #ffffff !important;
+      }
+
+      .nav-item {
+        margin-bottom: 0 !important;
+      }
+
+      .nav-link {
+        color: #2c2c2c !important;
+        font-weight: 450 !important;
+        font-size: 1.8vh !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 1.5vh 2vw !important;
+        transition: all 0.2s ease !important;
+        background-color: transparent !important;
+
+        &:hover {
+          color: #003399 !important;
+          background-color: #f0f0f0 !important;
+        }
+
+        &.active {
+          color: #093182 !important;
+          background-color: #ffffff !important;
+          border-bottom: 3px solid #093182 !important;
+          font-weight: 550 !important;
+        }
+      }
+
+      .tab-content {
+        background-color: #ffffff;
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .tab-pane {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }
 
 /* ==================== NAVIGATION PILLS (TABS) ===================== */
 .timeseries_tabs {
+  /* KEY FIX: Fill available space */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 0;
+  border-radius: 0;
+  
+  /* Match the map tab styling exactly */
+  .nav-tabs {
+    border-bottom: 2px solid #dedfe0;
+    background-color: #ffffff;
+    
+    .nav-link {
+      color: #2c2c2c !important;
+      font-weight: 450;
+      font-size: 1.8vh;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 1.5vh 2vw;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #003399 !important;
+        background-color: #f0f0f0;
+      }
+
+      &.active {
+        color: #093182 !important;
+        background-color: #ffffff;
+        border-bottom: 3px solid #093182 !important;
+        font-weight: 550;
+      }
+    }
+  }
+  
+  /* Keep nav-pills styling for backward compatibility if needed */
   .nav-pills {
     background-color: #f5f5f5;
     padding: 1vh 1vw;
     border-radius: 0;
     gap: 0.5vw;
     margin-bottom: 2vh;
+    flex-shrink: 0;
 
     .nav-link {
       color: #2c2c2c !important;
@@ -342,6 +487,21 @@ body {
       }
     }
   }
+  
+  /* KEY FIX: Tab content fills remaining space */
+  .tab-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 0;
+  }
+  
+  .tab-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* ==================== GRAPH CONTAINERS ==================== */
@@ -350,11 +510,24 @@ body {
 .south-graph,
 .global-graph {
   padding: 1vh 0;
+  /* KEY FIX: Fill available space */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
   hr {
     border-top: 2px solid #dedfe0;
     margin: 2vh 0;
     opacity: 0.6;
+    /* Prevent hr from growing */
+    flex-shrink: 0;
+  }
+  
+  /* KEY FIX: Make plotly output fill space */
+  .plotly,
+  #timeSeries {
+    flex: 1;
+    min-height: 0; /* Important for flexbox */
   }
 }
 
@@ -369,12 +542,17 @@ body {
   color: #2c2c2c;
   font-family: "Inter", sans-serif;
   border-radius: 0;
+  /* Prevent from growing */
+  flex-shrink: 0;
 }
 
 /* ==================== LEAFLET MAP ADJUSTMENTS ==================== */
 .leaflet-container {
   background-color: #f8f9fa;
   border-radius: 0;
+  /* KEY FIX: Make map fill its container */
+  height: 100% !important;
+  min-height: 500px;
 }
 
 /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
