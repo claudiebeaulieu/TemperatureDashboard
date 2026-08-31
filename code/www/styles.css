@@ -4,7 +4,7 @@
 body {
   background-color: #fcfcfc;
   color: #000000;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 /* ==================== NAVIGATION BAR ==================== */
@@ -16,83 +16,89 @@ body {
   justify-content: space-between;
   padding: 0;
   margin: 0;
+}
 
-  .container-fluid {
-    padding-left: 0vh;
-    padding-right: 0vh;
-  }
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    margin: 0 !important;
-    justify-content: center;
-    color: #fcfcfc !important;
-    background-color: #46638c !important;
-    font-weight: 500;
-    font-size: 3vh;
-    line-height: 11vh;
-    padding: 0vh 3vw;
-  }
+.navbar .container-fluid {
+  padding-left: 0vh;
+  padding-right: 0vh;
+}
 
-  .navbar-nav {
-    display: flex;
-    align-items: center;
-    padding-left: 3vw;
+.navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  justify-content: center;
+  color: #fcfcfc !important;
+  background-color: #46638c !important;
+  font-weight: 500;
+  font-size: 3vh;
+  line-height: 11vh;
+  padding: 0vh 3vw;
+}
 
-    .nav-item {
-      display: flex;
-      align-items: center;
-      padding: 0 0.8vw;
-      color: #2c2c2c !important;
-    }
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center;
+  padding-left: 3vw;
+}
 
-    .nav-link {
-      display: flex;
-      align-items: center;
-      color: #2c2c2c !important;
-      padding: 0 0.6vw !important;
-      font-weight: 500;
-      transition: color 0.2s ease;
-      font-size: 2vh !important;
+.navbar .navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0 0.8vw;
+  color: #2c2c2c !important;
+}
 
-      &:hover {
-        color: #003399 !important;
-      }
+.navbar .navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  color: #2c2c2c !important;
+  padding: 0 0.6vw !important;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-size: 2vh !important;
+}
 
-      &.active {
-        color: #093182 !important;
-      }
-    }
-  }
+.navbar .navbar-nav .nav-link:hover {
+  color: #003399 !important;
+}
+
+.navbar .navbar-nav .nav-link.active {
+  color: #093182 !important;
+}
+
+/* Keeps navbar brand and tab links grouped together on the left */
+.navbar-nav {
+  margin-right: auto !important;
 }
 
 /* ==================== HERO / OVERVIEW ==================== */
 .intro {
   padding: 5vh 8vw;
+}
 
-  .o-title {
-    font-size: 5vh;
-    font-weight: 600;
-    color: #2c2c2c !important;
-    margin-bottom: 10px;
-    font-family: "Inter";
-  }
+.intro .o-title {
+  font-size: 5vh;
+  font-weight: 600;
+  color: #2c2c2c !important;
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+}
 
-  .o-sub {
-    font-size: 2.7vh;
-    font-family: "Inter";
-    color: #093182;
-    font-weight: 530;
-    margin-bottom: 4vh;
-  }
+.intro .o-sub {
+  font-size: 2.7vh;
+  font-family: "Inter", sans-serif;
+  color: #093182;
+  font-weight: 530;
+  margin-bottom: 4vh;
+}
 
-  .o-para {
-    font-size: 2vh;
-    font-weight: 400 !important;
-    line-height: 1.7;
-    max-width: 70vw;
-    padding-left: 5vw;
-  }
+.intro .o-para {
+  font-size: 2vh;
+  font-weight: 400 !important;
+  line-height: 1.7;
+  max-width: 70vw;
+  padding-left: 5vw;
 }
 
 /* ==================== ABOUT / METHODS / USAGE CARDS ==================== */
@@ -106,429 +112,172 @@ body {
   border-radius: 2px;
   background-color: #dedfe0;
   gap: 1.5vw;
-  
-  .card {
-    margin: 1vw !important;
-    background-color: #ffffff;
-    width: 25vw;
-    margin: 0;
-    padding: 0;
-    border: none!important;
-    box-shadow: none!important;
-    border-radius: 0!important;
-    font-size: 2vh;
-
-    .card-header {
-      border-radius: 0!important;
-      background-color: #46638c;
-      padding: 2vh 1vw;
-      color: #fcfcfc;
-      font-weight: 450;
-      font-size: 2vh;
-
-      i {
-        color: #fcfcfc;
-        margin-right: 8px;
-      }
-    }
-  }
-
-  .card.about {
-    .card-body {
-      p {
-        padding: 1vh 1vw 0vh 1vw;
-        font-weight: 400;
-        line-height: 1.6;
-      }
-      
-      hr {
-        padding: 0vh;
-        width: 20em;
-        align-self: center;
-        border-top: 3px solid #093182;
-        opacity: 80%;
-        margin: 0;
-      }
-      
-      h5 {
-        color: #2c2c2c;
-        margin: 0!important;
-        font-size: 2vh;
-        font-weight: 550;
-        margin: 0!important;
-        padding-left: 1vw;
-      }
-
-      ul {
-        margin-top: 0 !important;
-        padding-left: 3vw;
-
-        li {
-          font-weight: 400;
-          margin-bottom: 0.5vh;
-        }
-      }
-    }
-  }
-
-  .card.methods {
-    .card-body {
-      dl {
-        padding: 1vh 1vw 0vh 1vw;
-        margin-bottom: 0;
-        dt {
-          font-weight: 450;
-          color: #000000;
-          margin-top: 10px;
-
-          &:first-child {
-            margin-top: 0;
-          }
-        }
-
-        dd {
-          color: #2c2c2c;
-          font-weight: 400;
-          margin-bottom: 8px;
-        }
-      }
-    }
-  }
-
-  .card.usage {
-    .card-body {
-      ul {
-        padding: 1vh 1vw 0vh 2vw;
-        li {
-          margin-bottom: 0.5vh;
-          color: #2c2c2c;
-
-          strong {
-            color: #2c2c2c;
-            font-weight: 550;
-          }
-        }
-      }
-    }
-  }
 }
 
+.info-cards-row .card {
+  margin: 1vw !important;
+  background-color: #ffffff;
+  width: 25vw;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  font-size: 2vh;
+}
 
-/* ==================== MAPS PAGE LAYOUT ==================== */
-/* KEY FIX: Ensure cards align at the same vertical position */
+.info-cards-row .card .card-header {
+  border-radius: 0 !important;
+  background-color: #46638c;
+  padding: 2vh 1vw;
+  color: #fcfcfc;
+  font-weight: 450;
+  font-size: 2vh;
+}
+
+.info-cards-row .card .card-header i {
+  color: #fcfcfc;
+  margin-right: 8px;
+}
+
+.info-cards-row .card.about .card-body p {
+  padding: 1vh 1vw 0vh 1vw;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.info-cards-row .card.about .card-body hr {
+  padding: 0vh;
+  width: 20em;
+  align-self: center;
+  border-top: 3px solid #093182;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.info-cards-row .card.about .card-body h5 {
+  color: #2c2c2c;
+  font-size: 2vh;
+  font-weight: 550;
+  margin: 0 !important;
+  padding-left: 1vw;
+}
+
+.info-cards-row .card.about .card-body ul {
+  margin-top: 0 !important;
+  padding-left: 3vw;
+}
+
+.info-cards-row .card.about .card-body ul li {
+  font-weight: 400;
+  margin-bottom: 0.5vh;
+}
+
+.info-cards-row .card.methods .card-body dl {
+  padding: 1vh 1vw 0vh 1vw;
+  margin-bottom: 0;
+}
+
+.info-cards-row .card.methods .card-body dl dt {
+  font-weight: 450;
+  color: #000000;
+  margin-top: 10px;
+}
+
+.info-cards-row .card.methods .card-body dl dt:first-child {
+  margin-top: 0;
+}
+
+.info-cards-row .card.methods .card-body dl dd {
+  color: #2c2c2c;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.info-cards-row .card.usage .card-body ul {
+  padding: 1vh 1vw 0vh 2vw;
+}
+
+.info-cards-row .card.usage .card-body ul li {
+  margin-bottom: 0.5vh;
+  color: #2c2c2c;
+}
+
+.info-cards-row .card.usage .card-body ul li strong {
+  color: #2c2c2c;
+  font-weight: 550;
+}
+
+/* ==================== MAPS PAGE LAYOUT & ALIGNMENT ==================== */
+/* Ensure the parent row forces side-by-side columns to be equal height */
+.row {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+
 .map-col,
 .time-col {
-  padding: 1vw 1vw; /* Same padding for alignment */
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Stack vertically */
+  padding: 1vw 1vw;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-/* KEY FIX: Remove any margin from cards that could misalign them */
+/* Force both cards to stretch equally */
 .map-card,
-.time-card {
+.time-card,
+.card {
   margin: 0 !important;
-  flex: 1; /* Both cards grow equally to fill column height */
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  height: 100%;
 }
 
-/* ==================== MAP CARD STYLING ==================== */
-.map-card {
-  background-color: #dedfe0;
+/* Lock header heights so left and right titles align horizontally */
+.map-card .card-header,
+.time-card .card-header,
+.time-card .time-header,
+.card-header {
+  background-color: #46638c !important;
+  color: #fcfcfc !important;
+  font-weight: 500;
+  font-size: 2vh;
+  padding: 1vh 1vw !important;
+  border-radius: 0 !important;
   border: none !important;
-  box-shadow: none !important;
-  border-radius: 2px !important;
-  margin: 0 !important; /* Remove margin */
-  /* KEY FIX: Make cards fill available height */
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-
-  .card-header {
-    background-color: #46638c !important;
-    color: #fcfcfc !important;
-    font-weight: 500;
-    font-size: 2vh;
-    padding: 2vh 1vw;
-    border-radius: 0 !important;
-    border: none !important;
-    /* KEY FIX: Ensure headers are same height */
-    min-height: 6vh;
-    display: flex;
-    align-items: center;
-  }
-
-  .map-outer-body {
-    background-color: #dedfe0;
-    padding: 1.5vw;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    
-    .card-body {
-      background-color: #ffffff;
-      padding: 0;
-      border-radius: 0;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-
-      .map-body {
-        background-color: #ffffff;
-        padding: 0;
-        border-radius: 0;
-        /* KEY FIX: Fill available space */
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-
-        .nav-tabs {
-          border-bottom: 2px solid #dedfe0;
-          background-color: #ffffff;
-        }
-
-        .nav-link {
-          color: #2c2c2c !important;
-          font-weight: 450;
-          font-size: 1.8vh;
-          border: none !important;
-          border-radius: 0 !important;
-          padding: 1.5vh 2vw;
-          transition: all 0.2s ease;
-
-          &:hover {
-            color: #003399 !important;
-            background-color: #f0f0f0;
-          }
-
-          &.active {
-            color: #093182 !important;
-            background-color: #ffffff;
-            border-bottom: 3px solid #093182 !important;
-            font-weight: 550;
-          }
-        }
-
-        .tab-content {
-          background-color: #ffffff;
-          padding: 0;
-          /* KEY FIX: Make tab content fill space */
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-        }
-        
-        /* KEY FIX: Ensure tab panes fill space */
-        .tab-pane {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-        }
-      }
-    }
-  }
+  min-height: 65px !important;
+  max-height: 65px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-/* ==================== TIME SERIES CARD STYLING ==================== */
-.time-card {
+/* Outer body wrappers */
+.map-outer-body,
+.time-body {
   background-color: #dedfe0;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 2px !important;
-  margin: 0 !important; /* Remove margin */
-  /* KEY FIX: Make cards fill available height */
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-
-  .time-header {
-    background-color: #46638c !important;
-    color: #fcfcfc !important;
-    font-weight: 500;
-    font-size: 2vh;
-    padding: 2vh 1vw;
-    border-radius: 0 !important;
-    border: none !important;
-    /* KEY FIX: Match header height with map card */
-    min-height: 6vh;
-    display: flex;
-    align-items: center;
-  }
-
-  .time-body {
-    background-color: #dedfe0;
-    padding: 1.5vw; /* MUST match map-outer-body padding */
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    .card-body {
-      background-color: #ffffff;
-      padding: 0;
-      border-radius: 0;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      
-      /* Match map styling exactly with higher specificity */
-      .nav-tabs {
-        border-bottom: 2px solid #dedfe0 !important;
-        background-color: #ffffff !important;
-      }
-
-      .nav-item {
-        margin-bottom: 0 !important;
-      }
-
-      .nav-link {
-        color: #2c2c2c !important;
-        font-weight: 450 !important;
-        font-size: 1.8vh !important;
-        border: none !important;
-        border-radius: 0 !important;
-        padding: 1.5vh 2vw !important;
-        transition: all 0.2s ease !important;
-        background-color: transparent !important;
-
-        &:hover {
-          color: #003399 !important;
-          background-color: #f0f0f0 !important;
-        }
-
-        &.active {
-          color: #093182 !important;
-          background-color: #ffffff !important;
-          border-bottom: 3px solid #093182 !important;
-          font-weight: 550 !important;
-        }
-      }
-
-      .tab-content {
-        background-color: #ffffff;
-        padding: 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .tab-pane {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-    }
-  }
+  padding: 1.5vw;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-/* ==================== NAVIGATION PILLS (TABS) ===================== */
-.timeseries_tabs {
-  /* KEY FIX: Fill available space */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.map-outer-body .card-body,
+.time-body .card-body,
+.card-body {
   background-color: #ffffff;
-  padding: 0;
+  padding: 1rem;
   border-radius: 0;
-  
-  /* Match the map tab styling exactly */
-  .nav-tabs {
-    border-bottom: 2px solid #dedfe0;
-    background-color: #ffffff;
-    
-    .nav-link {
-      color: #2c2c2c !important;
-      font-weight: 450;
-      font-size: 1.8vh;
-      border: none !important;
-      border-radius: 0 !important;
-      padding: 1.5vh 2vw;
-      transition: all 0.2s ease;
-
-      &:hover {
-        color: #003399 !important;
-        background-color: #f0f0f0;
-      }
-
-      &.active {
-        color: #093182 !important;
-        background-color: #ffffff;
-        border-bottom: 3px solid #093182 !important;
-        font-weight: 550;
-      }
-    }
-  }
-  
-  /* Keep nav-pills styling for backward compatibility if needed */
-  .nav-pills {
-    background-color: #f5f5f5;
-    padding: 1vh 1vw;
-    border-radius: 0;
-    gap: 0.5vw;
-    margin-bottom: 2vh;
-    flex-shrink: 0;
-
-    .nav-link {
-      color: #2c2c2c !important;
-      font-weight: 450;
-      font-size: 1.8vh;
-      border: none !important;
-      border-radius: 0 !important;
-      padding: 1.2vh 1.5vw;
-      transition: all 0.2s ease;
-      background-color: #ffffff;
-
-      &:hover {
-        color: #003399 !important;
-        background-color: #e8e8e8;
-      }
-
-      &.active {
-        color: #fcfcfc !important;
-        background-color: #46638c !important;
-        font-weight: 550;
-      }
-    }
-  }
-  
-  /* KEY FIX: Tab content fills remaining space */
-  .tab-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    padding: 0;
-  }
-  
-  .tab-pane {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-/* ==================== GRAPH CONTAINERS ==================== */
-.selected-graph,
-.north-graph,
-.south-graph,
-.global-graph {
-  padding: 1vh 0;
-  /* KEY FIX: Fill available space */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-
-  hr {
-    border-top: 2px solid #dedfe0;
-    margin: 2vh 0;
-    opacity: 0.6;
-    /* Prevent hr from growing */
-    flex-shrink: 0;
-  }
-  
-  /* KEY FIX: Make plotly output fill space */
-  .plotly,
-  #timeSeries {
-    flex: 1;
-    min-height: 0; /* Important for flexbox */
-  }
+/* Ensure plotting outputs expand into available vertical space */
+.plotly,
+.leaflet-container,
+#timeSeries,
+#map {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 450px !important;
 }
 
 /* ==================== MODEL SUMMARY TEXT ==================== */
@@ -542,17 +291,7 @@ body {
   color: #2c2c2c;
   font-family: "Inter", sans-serif;
   border-radius: 0;
-  /* Prevent from growing */
   flex-shrink: 0;
-}
-
-/* ==================== LEAFLET MAP ADJUSTMENTS ==================== */
-.leaflet-container {
-  background-color: #f8f9fa;
-  border-radius: 0;
-  /* KEY FIX: Make map fill its container */
-  height: 100% !important;
-  min-height: 500px;
 }
 
 /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
@@ -567,40 +306,71 @@ body {
     gap: 2vh;
   }
 
-  .card {
+  .info-cards-row .card {
     width: 100% !important;
   }
 }
 
-/* ==================== BUTTON STYLING (if needed) ==================== */
-.btn-outline-secondary {
-  color: #2c2c2c !important;
-  border-color: #2c2c2c !important;
-  font-size: 1.8vh;
-  font-weight: 450;
-  border-radius: 0 !important;
-  padding: 0.8vh 1.5vw;
-  transition: all 0.2s ease;
+/* ==================== ABSOLUTE HEADER ALIGNMENT FIX ==================== */
 
-  &:hover {
-    background-color: #2c2c2c !important;
-    color: #fcfcfc !important;
-  }
+/* 1. Force the parent row and columns to stretch identically */
+.row {
+  display: flex !important;
+  align-items: stretch !important;
 }
 
-/* ==================== PLOTLY MODEBAR ADJUSTMENTS ==================== */
-.js-plotly-plot {
-  .plotly {
-    .modebar {
-      background-color: transparent !important;
-    }
+.map-col,
+.time-col,
+.col-sm-6,
+.col-md-6,
+.col-lg-6 {
+  display: flex !important;
+  flex-direction: column !important;
+}
 
-    .modebar-btn {
-      color: #2c2c2c !important;
+/* 2. Force both cards to take full height */
+.map-card,
+.time-card,
+.card {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 0 auto !important;
+  height: 100% !important;
+}
 
-      &:hover {
-        background-color: #dedfe0 !important;
-      }
-    }
-  }
+/* 3. Lock card headers to exact dimensions and override Bootstrap defaults */
+.map-card .card-header,
+.time-card .card-header,
+.time-header,
+.card-header {
+  box-sizing: border-box !important;
+  height: 70px !important;
+  min-height: 70px !important;
+  max-height: 70px !important;
+  padding: 0 1.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  overflow: hidden !important;
+}
+
+/* 4. Neutralize Shiny slider container margins that push header height */
+.card-header .shiny-input-container,
+.card-header .form-group,
+.card-header .irs-with-grid,
+.card-header .irs {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 5. Fine-tune slider display inside header to fit 70px height */
+.card-header .irs-single, 
+.card-header .irs-from, 
+.card-header .irs-to {
+  font-size: 10px !important;
+}
+
+.card-header .irs-grid {
+  display: none !important; /* Hide grid lines inside header if crowding */
 }

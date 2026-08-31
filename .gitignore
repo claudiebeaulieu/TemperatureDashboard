@@ -15,6 +15,10 @@
 *.nc
 data/raw/
 
+# Processed data files
+*.rds
+data/processed/
+
 # Example code in package build process
 *-Ex.R
 

@@ -10,7 +10,7 @@
 # Script to load libraries and functions that will be used in this project.
 
 # load libraries #####
-
+library(here)
 library(shiny)
 library(shinydashboard)
 library(leaflet)
@@ -24,8 +24,7 @@ library(bslib)
 library(common)
 library(leaflet.extras)
 
-# load  analysis functions #####
 
-source('./code/ImportncData.R')
-source('./code/StCpts.R')
+
+# load  analysis functions #####
 source('./code/PELTtrendARpJOIN.R')
