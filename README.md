@@ -87,6 +87,18 @@ source("code/03_RunApp.R")
 
 ---
 
+## Dataset & Methodology Citations
+
+### Primary Data Source
+* **Berkeley Earth Surface Temperature Anomalies:**  
+  * Reference: Rohde, R.A., Hausfather, Z.: The Berkeley Earth land/ocean temperature record. Earth System Science Data 12(4), 3469–3479 (2020) https://doi.org/10.5194/618essd-12-3469-2020619
+  * url: https://berkeleyearth.org/data
+
+### Methodology
+* **Changepoint Detection on Surface Temperatures:**  
+  * Global: Beaulieu, C., Gallagher, C., Killick, R., Lund, R., Shi, X.: A recent surge in global warming is not detectable yet. Communications Earth & Environment 5(1), 576374 (2024) https://doi.org/10.1038/s43247-024-01711-1
+  * Regional: Beaulieu, C., Johnson, A., Killick, R., Lanzante, J. & Knutson, T. Space-time signature of surface warming accelerations since 1970. Nature Communications, accepted. (2026)
+  
 ## License
 
 Distributed under the MIT License. See LICENSE for more information.
