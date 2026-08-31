@@ -13,7 +13,7 @@ An interactive R Shiny dashboard for analyzing global surface temperature anomal
 ---
 
 ## Project Structure
-
+```
 ├── code/
 │   ├── 00_setup.R        # Environment setup & library dependencies
 │   ├── 01_fetch_data.R   # Download raw climate datasets
@@ -26,7 +26,7 @@ An interactive R Shiny dashboard for analyzing global surface temperature anomal
 │   ├── raw/              # Folder for raw temperature anomaly NetCDF file
 │   └── processed/        # Cleaned, formatted datasets ready for app ingestion
 └── README.md             # Project documentation
-
+```
 ---
 
 ## Getting Started
