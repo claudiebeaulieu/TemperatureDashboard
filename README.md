@@ -99,6 +99,17 @@ source("code/03_RunApp.R")
   * Global: Beaulieu, C., Gallagher, C., Killick, R., Lund, R., Shi, X.: A recent surge in global warming is not detectable yet. Communications Earth & Environment 5(1), 576374 (2024) https://doi.org/10.1038/s43247-024-01711-1
   * Regional: Beaulieu, C., Johnson, A., Killick, R., Lanzante, J. & Knutson, T. Space-time signature of surface warming accelerations since 1970. Nature Communications, accepted. (2026)
   
+  
+## Citing this Dashboard
+
+If you use this dashboard in your research, presentations, or educational materials, please cite the software as follows:
+
+### Citing this Dashboard
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.1234567)
+
+**Recommended Citation:**  
+Beaulieu, C., Stratton, C., Porras, K., Chavez, N., Zhai, D. and Yang, J. (2026). *Temperature Trends Explorer: An Interactive R Shiny Dashboard for Temperature Trends Analysis* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.1234567
+  
 ## License
 
 Distributed under the MIT License. See LICENSE for more information.
