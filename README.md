@@ -105,10 +105,10 @@ source("code/03_RunApp.R")
 If you use this dashboard in your research, presentations, or educational materials, please cite the software as follows:
 
 ### Citing this Dashboard
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.1234567)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22217060.svg)](https://doi.org/10.5281/zenodo.22217060)
 
 **Recommended Citation:**  
-Beaulieu, C., Stratton, C., Porras, K., Chavez, N., Zhai, D. and Yang, J. (2026). *Temperature Trends Explorer: An Interactive R Shiny Dashboard for Surface Temperature Trends Analysis* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.1234567
+Beaulieu, C., Stratton, C., Porras, K., Chavez, N., Zhai, D. and Yang, J. (2026). *Temperature Trends Explorer: An Interactive R Shiny Dashboard for Surface Temperature Trends Analysis* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22217060
   
 ## License
 
