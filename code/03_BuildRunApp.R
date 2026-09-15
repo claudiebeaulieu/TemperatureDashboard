@@ -100,13 +100,23 @@ ui = navbarPage(
     fluidRow(
       column(
         width = 12,
+        
+        div(
+          class = "alert alert-warning d-flex align-items-center mb-4 shadow-sm",
+          role = "alert",
+          icon("triangle-exclamation", class = "me-2 fs-4"),
+          div(
+            tags$strong("Under Construction: "),
+            "This dashboard is currently under active development. Features, visual design, and underlying datasets are subject to change."
+          )
+        ),
+        
         div(
           class = "p-4 mb-4 bg-light rounded-3 border shadow-sm",
           div(class = "fw-bold fs-5 mb-2 text-dark", "Surface Temperature Trend Dashboard"),
           p(
             class = "mb-0 text-secondary",
-            "This dashboard enables the user to interactively analyze surface temperature anomalies. Select any coordinate on the Map tab to execute real-time changepoint analysis and quantify localized warming rates (°C/decade). 
-            Note: this dashboard is under construction."
+            "This dashboard enables the user to interactively analyze surface temperature anomalies. Select any coordinate on the Map tab to execute real-time changepoint analysis and quantify localized warming rates (°C/decade)."
           )
         )
       )
