@@ -7,26 +7,13 @@
 ################################################################################
 
 
-# Script to load libraries and functions that will be used in this project.
+# Script that executes different scripts in order and launch the Shiny App
 
+# Execute different steps to setup, fetch data, process and build App
+source("./code/00_Setup.R")
+source("./code/01_FetchRawData.R")
+source("./code/02_ProcessData.R")
+source("./code/03_BuildRunApp.R")
 
-# load libraries
-library(here)
-library(shiny)
-library(shinydashboard)
-library(leaflet)
-library(ggplot2)
-library(dplyr)
-library(ncdf4)
-library(sp)
-library(tidyverse)
-library(plotly)
-library(bslib)
-library(common)
-library(leaflet.extras)
-library(rsconnect)
-
-
-
-# load  analysis functions 
-source('./code/PELTtrendARpJOIN.R')
+# Launch app
+app

@@ -7,26 +7,12 @@
 ################################################################################
 
 
-
-# ==============================================================================
-# Script 02: Process NetCDF to Annual Gridded & Global Mean Time Series
-# Output: Lightweight .rds files in data/processed/
-# ==============================================================================
-
-
-
-#' Compute Annual Means from Monthly NetCDF Climate Data
-#'
-#' @param nc_path Path to the raw NetCDF file
-#' @param var_name Variable name inside NetCDF (default: "temperature")
-#' 
+# Script to process NetCDF gridded monthly mean temperatures to annual means
+# Output: .rds file in data/processed/
 
 
 # Function that reads raw monthly gridded surface temperature (NetCDF) and 
 # computes annual means.
-
-# nc_path = "./data/raw/Land_and_Ocean_LatLong1.nc"
-
 process_annual_means = function(nc_path, var_name = "temperature") {
   
   if (!file.exists(nc_path)) {
@@ -36,7 +22,7 @@ process_annual_means = function(nc_path, var_name = "temperature") {
   message("Opening NetCDF file...")
   nc = nc_open(nc_path)
   
-  # 1. Extract Dimensions & Variables
+  # 1. Extract dimensions & variables
   lon  = ncvar_get(nc, "longitude")
   lat  = ncvar_get(nc, "latitude")
   time = ncvar_get(nc, "time") # Usually decimal years or months since baseline
@@ -72,7 +58,7 @@ process_annual_means = function(nc_path, var_name = "temperature") {
   }
   
   
-  # 5. Save intermediate datasets as fast .rds files
+  # 5. Save intermediate dataset as fast .rds file
   out_dir = here::here("data", "processed")
   dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
   

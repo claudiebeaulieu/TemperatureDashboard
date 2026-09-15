@@ -9,23 +9,25 @@ An interactive R Shiny dashboard for analyzing global surface temperature anomal
 - **Interactive Global Map:** Click any coordinate on a Leaflet map and analyze data at the selected location.
 - **Real-Time Changepoint Detection:** Automatically fits piecewise linear models to data.
 - **Dynamic Trend Analysis:** Calculates localized warming rates (°C/decade) with a custom start-year filter.
+- **New: Fast Ingestion:** Preprocessed spatial data pipeline for responsive browser performance.
 
 ---
 
 ## Project Structure
 ```
+├── app.R                 # Primary Shiny entry point for cloud deployment
+├── manifest.json         # Posit Connect Cloud configuration manifest
+├── README.md             # Project documentation
 ├── code/
-│   ├── 00_setup.R        # Environment setup & library dependencies
-│   ├── 01_fetch_data.R   # Download raw climate datasets
+│   ├── 00_Setup.R        # Environment setup & library dependencies
+│   ├── 01_FetchRawData.R # Download raw climate datasets
 │   ├── 02_ProcessData.R  # Data cleaning, formatting, & preprocessing
-│   ├── 03_RunApp.R       # Script to launch the Shiny dashboard
-│   ├── app.R             # Main Shiny application script
+│   ├── 03_BuildRunApp.R       # Script to define UI and launch the Shiny App
 │   └── www/
 │       └── styles.css    # Custom CSS styling & alignment fixes
-├── data/
-│   ├── raw/              # Folder for raw temperature anomaly NetCDF file
-│   └── processed/        # Cleaned, formatted datasets ready for app ingestion
-└── README.md             # Project documentation
+└── data/
+    ├── raw/              # Folder for raw temperature anomaly NetCDF file
+    └── processed/        # Cleaned, formatted datasets ready for app ingestion
 ```
 ---
 
@@ -57,15 +59,24 @@ install.packages(c(
 
 ## Data Pipeline & Running the Shiny App
 
-Follow these steps in R / RStudio to set up your environment, prepare the dataset, and launch the application:
+
+The different steps are automated, so you can run app.R to execute different steps in order:
+
+```R
+# Launch the Shiny dashboard
+shiny::runApp("app.R")
+```
+
+If you need to re-download raw Berkeley Earth NetCDF datasets or re-process data
+from scratch, run the setup and data scripts sequentially:
 
 ### 1. Run Setup Script
 Initialize project directories and load environment configuration:
-source("code/00_setup.R")
+source("code/00_Setup.R")
 
 ### 2. Fetch Raw Data
 Download the necessary raw climate anomaly files into data/raw/:
-source("code/01_fetch_data.R")
+source("code/01_FetchRawData.R")
 
 ### 3. Process Data
 Clean, structure, and export the processed datasets to data/processed/:
@@ -73,7 +84,7 @@ source("code/02_ProcessData.R")
 
 ### 4. Launch Application
 Launch the R Shiny dashboard locally:
-source("code/03_RunApp.R")
+source("code/03_BuildRunApp.R")
 
 ---
 
@@ -117,7 +128,7 @@ Distributed under the MIT License. See LICENSE for more information.
 
 ## Credits:
 
-Contributors to the development of this dashboard include Courtney Stratton, Kim Porras, Nicholas Chavez, Dongran Zhai and Joelle Yang.
+Contributors to the development of this dashboard include Courtney Stratton, Kim Porras, Nicholas Chavez, Dongran Zhai, Joelle Yang and Rebecca Killick.
 
 
 Please contact Claudie Beaulieu (beaulieu@ucsc.edu) for comments, suggestions, etc.
