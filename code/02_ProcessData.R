@@ -70,9 +70,11 @@ process_annual_means = function(nc_path, var_name = "temperature") {
   message("Processing complete! Processed files saved in data/processed/")
 }
 
-# --- Execution Block ---
-if (sys.nframe() == 0) {
-  nc_file = here::here("data", "raw", "Land_and_Ocean_LatLong1.nc")
-  process_annual_means(nc_file)
-}
+# Execution block
+nc_file = here::here("data", "raw", "Land_and_Ocean_LatLong1.nc")
+process_annual_means(nc_file)
+# if (sys.nframe() == 0) {
+#   nc_file = here::here("data", "raw", "Land_and_Ocean_LatLong1.nc")
+#   process_annual_means(nc_file)
+# }
 
