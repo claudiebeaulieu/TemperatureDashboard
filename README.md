@@ -15,14 +15,14 @@ An interactive R Shiny dashboard for analyzing global surface temperature anomal
 
 ## Project Structure
 ```
-├── app.R                 # Primary Shiny entry point for cloud deployment
+├── app.R                 # Main Shiny app entry point
 ├── manifest.json         # Posit Connect Cloud configuration manifest
 ├── README.md             # Project documentation
 ├── code/
 │   ├── 00_Setup.R        # Environment setup & library dependencies
 │   ├── 01_FetchRawData.R # Download raw climate datasets
 │   ├── 02_ProcessData.R  # Data cleaning, formatting, & preprocessing
-│   ├── 03_BuildRunApp.R       # Script to define UI and launch the Shiny App
+│   ├── 03_BuildRunApp.R  # Script to define UI and launch the Shiny App
 │   └── www/
 │       └── styles.css    # Custom CSS styling & alignment fixes
 └── data/
