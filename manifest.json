@@ -4487,7 +4487,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "6125096ae9fc53cba7dc2f631e5a6425"
+      "checksum": "ac71db80e4e79c37944fd935e89299fa"
     },
     "code/00_Setup.R": {
       "checksum": "0ea0478739a25c25889c017e151174c1"
@@ -4498,11 +4498,8 @@
     "code/02_ProcessData.R": {
       "checksum": "db4990277c0aa7adab685e8a852869f1"
     },
-    "code/03_BuildUI.R": {
-      "checksum": "c94182d71627a9c1f2316aec77e0f1ae"
-    },
-    "code/03_RunApp.R": {
-      "checksum": "c94182d71627a9c1f2316aec77e0f1ae"
+    "code/03_BuildRunApp.R": {
+      "checksum": "266ea665ca81431b63f91acaaeeed8d8"
     },
     "code/PELTtrendARpJOIN.R": {
       "checksum": "483019198bf5308c342cbe0b06ea245a"
@@ -4529,7 +4526,7 @@
       "checksum": "6d97f13fb67641000b952f1ee71dc3ef"
     },
     "README.md": {
-      "checksum": "eee71aac7f86bfe09da966bd7d3fde35"
+      "checksum": "6ca24e3f783c2ea278f244bc55f812e3"
     }
   },
   "users": null
