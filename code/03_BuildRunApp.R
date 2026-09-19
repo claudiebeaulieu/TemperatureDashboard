@@ -189,7 +189,36 @@ ui = navbarPage(
           )
         ),
         
-        # 3. Funding 
+        # 3. How to Cite
+        card(
+          class = "mb-4 shadow-sm",
+          card_header(icon("quote-left"), " How to Cite"),
+          card_body(
+            p("If you use this dashboard, please cite it as:"),
+            tags$blockquote(
+              class = "blockquote fs-6 p-3 bg-light border-start border-3 border-primary rounded-end",
+              "Beaulieu, C. (2026). ",
+              tags$strong("claudiebeaulieu/TemperatureDashboard: Temperature Trends Explorer"), 
+              " (Version v1.1.0) [Computer software]. Zenodo. ",
+              tags$a(
+                href = "https://doi.org/10.5281/zenodo.22781841", 
+                target = "_blank", 
+                "https://doi.org/10.5281/zenodo.22781841"
+              )
+            ),
+            div(
+              class = "d-flex justify-content-end",
+              tags$a(
+                href = "https://doi.org/10.5281/zenodo.22781841",
+                target = "_blank",
+                class = "btn btn-sm btn-outline-primary",
+                icon("external-link"), " View on Zenodo"
+              )
+            )
+          )
+        ),
+        
+        # 4. Funding 
         card(
           class = "mb-4 shadow-sm",
           card_header(icon("hand-holding-dollar"), " Funding"),
