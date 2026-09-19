@@ -12,7 +12,7 @@ An interactive R Shiny dashboard for analyzing global surface temperature anomal
 - **New: Fast Ingestion:** Preprocessed spatial data pipeline for responsive browser performance.
 
 ---
-
+ 
 ## Project Structure
 ```
 ├── app.R                 # Main Shiny app entry point
