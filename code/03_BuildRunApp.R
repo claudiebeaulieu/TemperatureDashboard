@@ -143,8 +143,70 @@ ui = navbarPage(
           card_body("Outputs segmented trends (°C/decade) and changepoint timings.")
         )
       )
-    )
+    ),
   ), # Close overview tab
+  
+  # About tab
+  tabPanel(
+    "About",
+    fluidRow(
+      column(
+        width = 8, 
+        offset = 2,
+        
+        # 1. Overview & Data Source
+        card(
+          class = "mb-4 shadow-sm",
+          card_header(icon("database"), " Data Source"),
+          card_body(
+            p(
+              "This dashboard utilizes annual surface temperature anomaly data sourced from ",
+              tags$a(href = "https://berkeleyearth.org/", target = "_blank", "Berkeley Earth"), "."
+            ),
+            tags$blockquote(
+              class = "blockquote fs-6 p-2 bg-light border-start border-3 border-primary",
+              "Rohde, R. A., & Hausfather, Z. (2020). The Berkeley Earth Land/Ocean Temperature Record. ",
+              tags$em("Earth System Science Data 12(4),3469-3479."), "."
+            )
+          )
+        ),
+        
+        # 2. Methodology
+        card(
+          class = "mb-4 shadow-sm",
+          card_header(icon("calculator"), " Methodology"),
+          card_body(
+            p("Statistical trends and changepoints are evaluated dynamically on user-selected grid cells based on:"),
+            tags$blockquote(
+              class = "blockquote fs-6 p-2 bg-light border-start border-3 border-primary",
+              "Beaulieu, C., Johnson, A., Killick, R., Lanzante, J. & Knutson, T. (2026). Space-time signature of surface warming accelerations since 1970. ",
+              tags$em("Nature Communications"), "."
+            ),
+            tags$ul(
+              tags$li(tags$strong("Algorithmic Detection: "), "Uses Pruned Exact Linear Time (PELT) changepoint detection with an AR(1) autoregressive noise process."),
+              tags$li(tags$strong("Parameterization: "), "Penalty set to ", tags$code("pen = 4 * log(n)"), " with a minimum segment length of ", tags$code("minseglen = 10 years"), ".")
+            )
+          )
+        ),
+        
+        # 3. Funding 
+        card(
+          class = "mb-4 shadow-sm",
+          card_header(icon("hand-holding-dollar"), " Funding"),
+          card_body(
+            div(
+              class = "text-start",
+              p(
+                class = "mb-0 text-muted small",
+                "This work is funded by the National Science Foundation grant No AGS-2143550."
+              )
+            )
+          )
+        )
+        
+      ) # Close column
+    ) # Close fluidRow
+  ), # Close about tab
   
   # Maps tab
   tabPanel(
@@ -191,7 +253,7 @@ ui = navbarPage(
                   label   = NULL,
                   min     = min(years),
                   max     = max(years) - 15,
-                  value   = min(years),
+                  value   = 1970,
                   step    = 1,
                   sep     = ""
                 )
@@ -276,7 +338,7 @@ server = function(input, output, session) {
     
     analysis = cell$analysis
     if (is.null(analysis)) {
-      return(HTML('<div class="summary-text" style="padding:10px;">No climate data available for this ocean/unmeasured location.</div>'))
+      return(HTML('<div class="summary-text" style="padding:10px;">No climate data available for this location.</div>'))
     }
     
     ns_indicator = get_ns_indicator(cell$lat)
@@ -293,7 +355,7 @@ server = function(input, output, session) {
     seg_strings = sprintf("<li><strong>Segment %d:</strong> %+.3f °C/decade</li>", seq_along(slopes), slopes)
     
     summary_html = sprintf(
-      "Location: <strong>%.1f° %s, %.1f° %s</strong><br>Detected Changepoints: <strong>%s</strong><br>Segment Slopes:<ul style='margin-top:4px; margin-bottom:0px;'>%s</ul>",
+      "Location: <strong>%.1f° %s, %.1f° %s</strong><br>Detected Changepoints: <strong>%s</strong><br>Segment Slopes:<ul style='margin-top:4px; margin-bottom:4px;'>%s</ul><hr style='margin: 8px 0;'><div class='text-muted' style='font-size: 0.8rem;'><em><strong>Note:</strong> Detected changepoints and segment slopes depend on the selected time window and may shift if the start year is altered.</em></div>",
       abs(as.numeric(cell$lat)), ns_indicator,
       abs(as.numeric(cell$lon)), ew_indicator,
       cpt_str,

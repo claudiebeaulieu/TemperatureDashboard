@@ -119,16 +119,13 @@ If you use this dashboard in your research, presentations, or educational materi
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22217060.svg)](https://doi.org/10.5281/zenodo.22217060)
 
 **Recommended Citation:**  
-Beaulieu, C., Stratton, C., Porras, K., Chavez, N., Zhai, D. and Yang, J. (2026). *Temperature Trends Explorer: An Interactive R Shiny Dashboard for Surface Temperature Trends Analysis* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22217060
+Beaulieu, C., Stratton, C., Porras, K., Chavez, N., Zhai, D., Yang, J. and Killick, R. (2026). *Temperature Trends Explorer: An Interactive R Shiny Dashboard for Surface Temperature Trends Analysis* (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.22217060
   
 ## License
 
 Distributed under the MIT License. See LICENSE for more information.
 
 
-## Credits:
-
-Contributors to the development of this dashboard include Courtney Stratton, Kim Porras, Nicholas Chavez, Dongran Zhai, Joelle Yang and Rebecca Killick.
-
+## Contact:
 
 Please contact Claudie Beaulieu (beaulieu@ucsc.edu) for comments, suggestions, etc.
