@@ -166,7 +166,7 @@ ui = navbarPage(
             tags$blockquote(
               class = "blockquote fs-6 p-2 bg-light border-start border-3 border-primary",
               "Rohde, R. A., & Hausfather, Z. (2020). The Berkeley Earth Land/Ocean Temperature Record. ",
-              tags$em("Earth System Science Data 12(4),3469-3479."), "."
+              tags$em("Earth System Science Data 12(4),3469-3479."),
             )
           )
         ),
@@ -180,7 +180,7 @@ ui = navbarPage(
             tags$blockquote(
               class = "blockquote fs-6 p-2 bg-light border-start border-3 border-primary",
               "Beaulieu, C., Johnson, A., Killick, R., Lanzante, J. & Knutson, T. (2026). Space-time signature of surface warming accelerations since 1970. ",
-              tags$em("Nature Communications"), "."
+              tags$em("Nature Communications."),
             ),
             tags$ul(
               tags$li(tags$strong("Algorithmic Detection: "), "Uses Pruned Exact Linear Time (PELT) changepoint detection with an AR(1) autoregressive noise process."),
