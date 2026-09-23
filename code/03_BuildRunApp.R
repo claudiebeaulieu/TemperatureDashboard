@@ -197,7 +197,7 @@ ui = navbarPage(
             p("If you use this dashboard, please cite it as:"),
             tags$blockquote(
               class = "blockquote fs-6 p-3 bg-light border-start border-3 border-primary rounded-end",
-              "Beaulieu, C. (2026). ",
+              "Claudie Beaulieu, Stratton, C., Porras, K., Chavez, N., Zhai, D., Yang, J., & Killick, R. (2026).",
               tags$strong("claudiebeaulieu/TemperatureDashboard: Temperature Trends Explorer"), 
               " (Version v1.1.0) [Computer software]. Zenodo. ",
               tags$a(
